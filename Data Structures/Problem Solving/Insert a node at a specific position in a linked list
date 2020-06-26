@@ -1,0 +1,27 @@
+
+// Complete the insertNodeAtPosition function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode* next;
+ * };
+ *
+ */
+SinglyLinkedListNode* insertNodeAtPosition(SinglyLinkedListNode* head, int data, int position) {
+ SinglyLinkedListNode* prev, *cur;
+    SinglyLinkedListNode* new_data = new SinglyLinkedListNode( data );
+    if( !position ) {
+        new_data->next = head;
+        return new_data;
+    }
+    prev = nullptr, cur = head;
+    for( int i = 0; i < position; i++, prev = cur, cur = cur->next );
+    prev->next = new_data;
+    new_data->next = cur;
+    return head;
+
+}
+
